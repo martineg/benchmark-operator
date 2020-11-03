@@ -15,6 +15,18 @@ spec:
 {% if workload_args.nodeselector is defined %}
       nodeSelector: {{ workload_args.nodeselector | to_json }}
 {% endif %}
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - stressng_workload-{{ trunc_uuid }}
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: stressng
         image: {{ workload_args.image | default('quay.io/cloud-bulldozer/stressng:latest') }}
