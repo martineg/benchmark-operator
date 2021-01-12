@@ -51,8 +51,8 @@ Note: If you're on a vanilla k8s distribution, then you can also deploy Ripsaw t
 First we'll need to clone the operator:
 
 ```bash
-# git clone https://github.com/cloud-bulldozer/ripsaw
-# cd ripsaw
+# git clone https://github.com/cloud-bulldozer/benchmark-operator.git
+# cd benchmark-operator
 # export KUBECONFIG=<your_kube_config> # if not already done
 ```
 
